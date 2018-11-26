@@ -63,7 +63,7 @@ void draw() {
   
   filter(neon);
   signature();
-  record(2000);
+  //record(2000);
 }
 
 void mousePressed() {
