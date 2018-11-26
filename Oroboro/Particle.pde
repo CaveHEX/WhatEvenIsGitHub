@@ -7,7 +7,7 @@ class Particle {
   float friction = 0.98;
 
   float lifeSpan = 255;
-  float decay = 2.5;
+  float decay = 5.0;
 
   float hue;
   color c = hsbVaryS(g_base, 30);
@@ -15,6 +15,7 @@ class Particle {
   PVector wind;
 
   Particle() {
+    
   }
 
   Particle(PVector force) {
@@ -41,10 +42,13 @@ class Particle {
   void render() {
     push();
     noStroke();
-    fill(c);
+    fill(c, 80);
     translate(pos.x, pos.y, pos.z);
-    float s = map(lifeSpan, 255, 0, 40, 0);
-    sphere(s);
+    rotateY(HALF_PI);
+    rotateZ(PVector.angleBetween(new PVector(), vel));
+    float s = map(lifeSpan, 255, 0, 0.6, 0);
+    scale(s);
+    shape(g_shape);
     pop();
   }
 
